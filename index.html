@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Facebook Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="main-login">
+        <h1>LogIn With Facebook</h1>
+        <button class="facebook-login-btn" onclick="facebookAuth()">Facebook Login</button>
+    </div>
+
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyACy34fEv3PgXtHu5IWlwD8lCmxh8SoeYs",
+            authDomain: "chat-application-665bf.firebaseapp.com",
+            databaseURL: "https://chat-application-665bf.firebaseio.com",
+            projectId: "chat-application-665bf",
+            storageBucket: "chat-application-665bf.appspot.com",
+            messagingSenderId: "662327837037",
+            appId: "1:662327837037:web:bb2fa239b9c2515a81da64"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script>
+        
+        var facebookAuth = () => {
+
+            var provider = new firebase.auth.FacebookAuthProvider();
+
+            firebase.auth().signInWithPopup(provider)
+            .then(function(result) {
+                window.location.assign('./chat-app.html');
+            }).catch(function(error) {
+                alert(error)
+            });
+
+
+
+        }
+
+
+    </script>
+
+</body>
+</html>
